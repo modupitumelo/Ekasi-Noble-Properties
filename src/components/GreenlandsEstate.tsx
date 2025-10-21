@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Home, ShoppingBag, GraduationCap, Car, Shield, Building2, Phone, Mail, ExternalLink } from 'lucide-react';
+import { MapPin, Home, ShoppingBag, GraduationCap, Car, Shield, Building2, Phone, Mail, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface GreenlandsEstateProps {
   scrollToContact: () => void;
@@ -36,7 +36,29 @@ const aboutPoints = [
   'Premium living experience that exceeds expectations'
 ];
 
+const projectImages = [
+  '/greenland1.jpg',
+  '/greenland2.jpg',
+  '/greenland3.jpg',
+  '/greenland4.jpg',
+  '/greenland5.jpg'
+];
+
 const GreenlandsEstate: React.FC<GreenlandsEstateProps> = ({ scrollToContact }) => {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const handlePrevImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage - 1 + projectImages.length) % projectImages.length);
+    }
+  };
+
+  const handleNextImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage + 1) % projectImages.length);
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
@@ -66,6 +88,30 @@ const GreenlandsEstate: React.FC<GreenlandsEstateProps> = ({ scrollToContact }) 
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Project Gallery</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+            {projectImages.map((image, index) => (
+              <motion.div
+                key={index}
+                className="relative aspect-square rounded-lg overflow-hidden cursor-pointer group"
+                whileHover={{ scale: 1.05 }}
+                onClick={() => setSelectedImage(index)}
+              >
+                <img
+                  src={image}
+                  alt={`Greenlands Estate ${index + 1}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-semibold">
+                    View
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
           <h2 className="text-3xl font-bold text-gray-900 mb-6">About Greenlands</h2>
           <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
             <p>
@@ -250,6 +296,59 @@ const GreenlandsEstate: React.FC<GreenlandsEstateProps> = ({ scrollToContact }) 
           </motion.button>
         </motion.div>
       </div>
+
+      {selectedImage !== null && (
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
+          <button
+            className="absolute top-4 right-4 bg-white rounded-full p-2 text-gray-800 hover:text-blue-600 transition-colors z-10"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X size={24} />
+          </button>
+
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-10 hidden md:block"
+            onClick={handlePrevImage}
+          >
+            <ChevronLeft size={32} />
+          </button>
+
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-10 hidden md:block"
+            onClick={handleNextImage}
+          >
+            <ChevronRight size={32} />
+          </button>
+
+          <div className="relative max-w-6xl w-full">
+            <img
+              src={projectImages[selectedImage]}
+              alt={`Greenlands Estate ${selectedImage + 1}`}
+              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+            />
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white bg-opacity-90 px-4 py-2 rounded-full">
+              <p className="text-sm font-semibold text-gray-800">
+                {selectedImage + 1} / {projectImages.length}
+              </p>
+            </div>
+
+            <div className="flex md:hidden gap-4 justify-center mt-4">
+              <button
+                className="bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors"
+                onClick={handlePrevImage}
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                className="bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors"
+                onClick={handleNextImage}
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
