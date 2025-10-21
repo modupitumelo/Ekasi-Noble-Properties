@@ -95,7 +95,7 @@ const PropertyCard: React.FC<{
 
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -104,73 +104,71 @@ const PropertyCard: React.FC<{
         <img
           src={property.image}
           alt={property.title}
-          className="w-full h-64 object-cover cursor-pointer transition-transform duration-500 hover:scale-105"
+          className="w-full h-48 sm:h-56 md:h-64 object-cover cursor-pointer transition-transform duration-500 hover:scale-105"
           onClick={() => onImageClick(property.image, property.title)}
         />
         {Array.isArray(property.type) ? (
-          <div className="absolute top-4 right-4 flex gap-2">
-            <div className="bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
+          <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex flex-col sm:flex-row gap-2">
+            <div className="bg-blue-600 text-white text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
               For Sale
             </div>
-            <div className="bg-green-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
+            <div className="bg-green-600 text-white text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
               Rent to Own
             </div>
           </div>
         ) : (
           property.type === 'rent-to-own' && (
-            <div className="absolute top-4 right-4 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
+            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-blue-600 text-white text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full">
               Rent to Own
             </div>
           )
         )}
         {property.type === 'group' && (
-          <div className="absolute top-4 right-4 bg-green-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
+          <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-green-600 text-white text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full">
             Group Buying
           </div>
         )}
       </div>
 
-      <div className="p-6">
-        <div className="mb-3">
-          <h3 className="text-xl font-bold text-blue-900 mb-2">
+      <div className="p-4 sm:p-6 flex flex-col flex-grow">
+        <div className="mb-3 flex-grow">
+          <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-2 line-clamp-2">
             {property.title}
           </h3>
-          <div className="flex justify-between items-center">
-            <p className="text-gray-600 flex items-center">
-              <MapPin size={16} className="mr-1 text-blue-600" />
-              {property.location}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
+            <p className="text-gray-600 flex items-center text-sm sm:text-base">
+              <MapPin size={16} className="mr-1 text-blue-600 flex-shrink-0" />
+              <span className="line-clamp-1">{property.location}</span>
             </p>
-            <p className="text-lg font-bold text-blue-600">{property.price}</p>
+            <p className="text-lg sm:text-xl font-bold text-blue-600 whitespace-nowrap">{property.price}</p>
           </div>
+
+          <p className="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3">{property.description}</p>
         </div>
 
-        <p className="text-gray-700 mb-4">{property.description}</p>
-
         {property.type !== 'group' ? (
-          <div className="flex justify-between text-gray-600 mb-4">
+          <div className="flex justify-around sm:justify-between text-gray-600 text-sm sm:text-base border-t pt-3">
             <div className="flex items-center">
-              <Bed size={18} className="mr-1 text-blue-600" />
+              <Bed size={16} className="sm:w-[18px] sm:h-[18px] mr-1 text-blue-600" />
               <span>{property.beds} Beds</span>
             </div>
             <div className="flex items-center">
-              <Bath size={18} className="mr-1 text-blue-600" />
+              <Bath size={16} className="sm:w-[18px] sm:h-[18px] mr-1 text-blue-600" />
               <span>{property.baths} Baths</span>
             </div>
             <div className="flex items-center">
-              <Maximize size={18} className="mr-1 text-blue-600" />
+              <Maximize size={16} className="sm:w-[18px] sm:h-[18px] mr-1 text-blue-600" />
               <span>{property.area}</span>
             </div>
           </div>
         ) : (
-          <div className="flex justify-center text-gray-600 mb-4">
+          <div className="flex justify-center text-gray-600 border-t pt-3 text-sm sm:text-base">
             <div className="flex items-center">
-              <Home size={18} className="mr-1 text-blue-600" />
+              <Home size={16} className="sm:w-[18px] sm:h-[18px] mr-1 text-blue-600" />
               <span>{property.properties} Properties</span>
             </div>
           </div>
         )}
-
-       
       </div>
     </motion.div>
   );
@@ -218,16 +216,16 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
         </motion.div>
 
         <motion.div
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-8 overflow-x-auto px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="inline-flex rounded-lg shadow-md" role="group">
+          <div className="inline-flex rounded-lg shadow-md flex-nowrap" role="group">
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium rounded-l-lg ${
+              className={`px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-l-lg whitespace-nowrap ${
                 activeTab === 'all'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -238,7 +236,7 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
             </button>
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium ${
+              className={`px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap ${
                 activeTab === 'sale'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -249,7 +247,7 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
             </button>
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium ${
+              className={`px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap ${
                 activeTab === 'rent-to-own'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -260,7 +258,7 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
             </button>
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium rounded-r-lg ${
+              className={`px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-r-lg whitespace-nowrap ${
                 activeTab === 'group'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -300,39 +298,47 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
         </div>
       </div>
 
-      {/* Image Preview Modal */}
       {previewImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 p-4 sm:p-6 md:p-8"
           onClick={() => setPreviewImage(null)}
         >
-          <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="relative max-w-5xl w-full flex flex-col max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              className="absolute -top-12 right-0 bg-white rounded-full p-3 text-gray-800 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg z-10"
+              className="absolute -top-2 -right-2 sm:top-0 sm:right-0 md:-top-4 md:-right-4 bg-white rounded-full p-2 sm:p-3 text-gray-800 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg z-20 flex items-center justify-center"
               onClick={() => setPreviewImage(null)}
               aria-label="Close preview"
             >
-              <X size={28} />
+              <X size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </button>
-            <img
-              src={previewImage.url}
-              alt={previewImage.title}
-              className="w-full rounded-lg shadow-2xl"
-            />
-            <div className="bg-white p-4 rounded-b-lg">
-              <h3 className="text-xl font-bold text-blue-900">
-                {previewImage.title}
-              </h3>
-              <button
-                className="mt-2 text-blue-600 hover:text-blue-800 flex items-center"
-                onClick={() => {
-                  setPreviewImage(null);
-                  scrollToContact();
-                }}
-              >
-                Enquire about this property{' '}
-                <ArrowRight size={16} className="ml-1" />
-              </button>
+
+            <div className="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-full">
+              <div className="overflow-auto flex-shrink">
+                <img
+                  src={previewImage.url}
+                  alt={previewImage.title}
+                  className="w-full h-auto object-contain max-h-[60vh] sm:max-h-[70vh]"
+                />
+              </div>
+
+              <div className="bg-white p-4 sm:p-6 border-t flex-shrink-0">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-900 mb-2 sm:mb-3">
+                  {previewImage.title}
+                </h3>
+                <button
+                  className="text-sm sm:text-base text-blue-600 hover:text-blue-800 flex items-center font-medium transition-colors"
+                  onClick={() => {
+                    setPreviewImage(null);
+                    scrollToContact();
+                  }}
+                >
+                  Enquire about this property
+                  <ArrowRight size={16} className="sm:w-5 sm:h-5 ml-1 sm:ml-2" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
