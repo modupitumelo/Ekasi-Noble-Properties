@@ -302,18 +302,22 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
 
       {/* Image Preview Modal */}
       {previewImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-          <div className="relative max-w-5xl w-full">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+          onClick={() => setPreviewImage(null)}
+        >
+          <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
-              className="absolute top-4 right-4 bg-white rounded-full p-2 text-gray-800 hover:text-blue-600 transition-colors"
+              className="absolute -top-12 right-0 bg-white rounded-full p-3 text-gray-800 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg z-10"
               onClick={() => setPreviewImage(null)}
+              aria-label="Close preview"
             >
-              <X size={24} />
+              <X size={28} />
             </button>
             <img
               src={previewImage.url}
               alt={previewImage.title}
-              className="w-full rounded-lg"
+              className="w-full rounded-lg shadow-2xl"
             />
             <div className="bg-white p-4 rounded-b-lg">
               <h3 className="text-xl font-bold text-blue-900">
