@@ -308,11 +308,11 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute -top-2 -right-2 sm:top-0 sm:right-0 md:-top-4 md:-right-4 bg-white rounded-full p-2 sm:p-3 text-gray-800 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg z-20 flex items-center justify-center"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg transition-all hover:scale-110 z-20 flex items-center justify-center"
               onClick={() => setPreviewImage(null)}
               aria-label="Close preview"
             >
-              <X size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
+              <X size={24} className="text-gray-800 hover:text-blue-600" />
             </button>
 
             <div className="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-full">
