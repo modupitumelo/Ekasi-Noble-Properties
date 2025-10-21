@@ -298,52 +298,57 @@ const GreenlandsEstate: React.FC<GreenlandsEstateProps> = ({ scrollToContact }) 
       </div>
 
       {selectedImage !== null && (
-        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4 sm:p-6">
           <button
-            className="absolute top-4 right-4 bg-white rounded-full p-2 text-gray-800 hover:text-blue-600 transition-colors z-10"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg transition-all hover:scale-110 z-20 flex items-center justify-center"
             onClick={() => setSelectedImage(null)}
+            aria-label="Close image preview"
           >
-            <X size={24} />
+            <X size={24} className="text-gray-800 hover:text-blue-600" />
           </button>
 
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-10 hidden md:block"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-2 sm:p-3 shadow-lg transition-all hover:scale-110 z-20 hidden md:flex items-center justify-center"
             onClick={handlePrevImage}
+            aria-label="Previous image"
           >
-            <ChevronLeft size={32} />
+            <ChevronLeft size={28} className="sm:w-8 sm:h-8 text-gray-800 hover:text-blue-600" />
           </button>
 
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-10 hidden md:block"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-2 sm:p-3 shadow-lg transition-all hover:scale-110 z-20 hidden md:flex items-center justify-center"
             onClick={handleNextImage}
+            aria-label="Next image"
           >
-            <ChevronRight size={32} />
+            <ChevronRight size={28} className="sm:w-8 sm:h-8 text-gray-800 hover:text-blue-600" />
           </button>
 
-          <div className="relative max-w-6xl w-full">
+          <div className="relative max-w-6xl w-full flex flex-col items-center">
             <img
               src={projectImages[selectedImage]}
               alt={`Greenlands Estate ${selectedImage + 1}`}
-              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              className="w-full h-auto max-h-[70vh] sm:max-h-[80vh] object-contain rounded-lg"
             />
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white bg-opacity-90 px-4 py-2 rounded-full">
-              <p className="text-sm font-semibold text-gray-800">
+            <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 bg-white bg-opacity-90 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+              <p className="text-xs sm:text-sm font-semibold text-gray-800">
                 {selectedImage + 1} / {projectImages.length}
               </p>
             </div>
 
-            <div className="flex md:hidden gap-4 justify-center mt-4">
+            <div className="flex md:hidden gap-3 sm:gap-4 justify-center mt-4">
               <button
-                className="bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors"
+                className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 sm:p-3 text-gray-800 hover:text-blue-600 hover:bg-white transition-all shadow-lg"
                 onClick={handlePrevImage}
+                aria-label="Previous image"
               >
-                <ChevronLeft size={24} />
+                <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
               </button>
               <button
-                className="bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors"
+                className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 sm:p-3 text-gray-800 hover:text-blue-600 hover:bg-white transition-all shadow-lg"
                 onClick={handleNextImage}
+                aria-label="Next image"
               >
-                <ChevronRight size={24} />
+                <ChevronRight size={20} className="sm:w-6 sm:h-6" />
               </button>
             </div>
           </div>
