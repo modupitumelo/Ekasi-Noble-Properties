@@ -162,41 +162,61 @@ const Gallery: React.FC = () => {
         {/* Image Preview Modal */}
         {selectedImage && (
           <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-            <motion.div 
+            <motion.div
               className="relative max-w-5xl w-full"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
             >
-              <button 
-                className="absolute top-4 right-4 bg-white rounded-full p-2 text-gray-800 hover:text-blue-600 transition-colors z-20"
+              <button
+                className="absolute top-4 right-4 bg-white rounded-full p-2 text-gray-800 hover:text-blue-600 transition-colors z-20 md:flex items-center justify-center"
                 onClick={() => setSelectedImage(null)}
+                aria-label="Close image preview"
               >
                 <X size={24} />
               </button>
 
               <button
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-20"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-20 hidden md:flex items-center justify-center"
                 onClick={handlePrevImage}
+                aria-label="Previous image"
               >
                 <ChevronLeft size={24} />
               </button>
 
               <button
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-20"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors z-20 hidden md:flex items-center justify-center"
                 onClick={handleNextImage}
+                aria-label="Next image"
               >
                 <ChevronRight size={24} />
               </button>
 
-              <img 
-                src={selectedImage.image} 
-                alt={selectedImage.title} 
+              <img
+                src={selectedImage.image}
+                alt={selectedImage.title}
                 className="w-full rounded-t-lg"
               />
               <div className="bg-white p-4 rounded-b-lg">
                 <h3 className="text-xl font-bold text-blue-900">{selectedImage.title}</h3>
                 <p className="text-gray-600">{selectedImage.category}</p>
+              </div>
+
+              <div className="flex md:hidden gap-4 justify-center mt-4">
+                <button
+                  className="bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors shadow-lg"
+                  onClick={handlePrevImage}
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  className="bg-white rounded-full p-3 text-gray-800 hover:text-blue-600 transition-colors shadow-lg"
+                  onClick={handleNextImage}
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={24} />
+                </button>
               </div>
             </motion.div>
           </div>

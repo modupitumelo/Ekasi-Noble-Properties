@@ -60,7 +60,7 @@ const GreenlandsEstate: React.FC<GreenlandsEstateProps> = ({ scrollToContact }) 
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <section className="pt-32 pb-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -300,7 +300,7 @@ const GreenlandsEstate: React.FC<GreenlandsEstateProps> = ({ scrollToContact }) 
       {selectedImage !== null && (
         <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4 sm:p-6">
           <button
-            className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg transition-all hover:scale-110 z-20 flex items-center justify-center"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg transition-all hover:scale-110 z-20 flex items-center justify-center md:block"
             onClick={() => setSelectedImage(null)}
             aria-label="Close image preview"
           >
