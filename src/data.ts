@@ -56,7 +56,7 @@ export type Property = {
   beds?: string;
   baths?: string;
   size: string;
-  tags: ('For Sale' | 'Rent to Own' | 'Group Buying')[];
+  tags: ('For Sale' | 'Crowdfunding' | 'Group Buying')[];
   badge?: string;
   image: string;
   featured?: boolean;
@@ -69,11 +69,11 @@ export const PROPERTIES: Property[] = [
     location: 'North Riding',
     price: 'R450,000',
     description:
-      'Beautiful property available for sale or rent-to-own. Deposit R299,000 with monthly repayments of R7,000.',
+      'Beautiful property available for sale or crowdfunding. Deposit R299,000 with monthly repayments of R7,000.',
     beds: '2 - 4 Beds',
     baths: 'Baths',
     size: '250m²',
-    tags: ['For Sale', 'Rent to Own'],
+    tags: ['For Sale', 'Crowdfunding'],
     image: '/ngonyama.jpg',
     featured: true,
   },
@@ -101,7 +101,7 @@ export const PROPERTIES: Property[] = [
     beds: '1 Beds',
     baths: '1 Baths',
     size: '45m²',
-    tags: ['For Sale', 'Rent to Own'],
+    tags: ['For Sale', 'Crowdfunding'],
     image: '/p&s.jpg',
   },
   {
@@ -114,7 +114,7 @@ export const PROPERTIES: Property[] = [
     beds: '2 Beds',
     baths: '1 Baths',
     size: '65m²',
-    tags: ['For Sale', 'Rent to Own'],
+    tags: ['For Sale', 'Crowdfunding'],
     image: '/p&s2.jpg',
     featured: true,
   },
@@ -135,7 +135,6 @@ export const PROPERTIES: Property[] = [
 export const LOCATIONS = [
   { name: 'Greenhills', units: 6, image: '/exterior1.jpg' },
   { name: 'Robinpark', units: 3, image: '/exterior2.jpg' },
-  { name: 'Kocksoord', units: 15, image: '/exterior3.jpg' },
   { name: 'Northriding', units: 1, image: '/exterior4.jpg' },
 ];
 
@@ -308,6 +307,54 @@ export const PORTFOLIO: PortfolioProject[] = [
     },
     contactNote: 'Are you considering becoming a part of the vibrant and environmentally-conscious Greenlands community? Contact the More Key Homes sales team now to get detailed information and access on how you can secure your spot in this exclusive neighborhood.',
   },
+  {
+    id: 'hartebeespoort-shares',
+    tag: '1ha Plot Shares',
+    name: 'Hartebeespoort 1ha Plot Shares',
+    location: 'Hartebeespoort',
+    body: 'Join our group of investors in a 1-hectare plot shares initiative — a tranquil luxury wellness destination combining premium accommodation, spa facilities, and breathtaking natural surroundings.',
+    image: '/hartebeespoort1.jpeg',
+    gallery: ['/hartebeespoort1.jpeg', '/hartebeespoort2.jpeg', '/hartebeespoort3.jpeg', '/hartebeespoort4.jpeg', '/hartebeespoort5.jpeg'],
+    about: [
+      {
+        heading: 'Our Commitment',
+        paragraphs: [
+          'At Ekasi Noble Properties, we remain committed to creating exceptional lifestyle, hospitality, and investment destinations that deliver long-term value. Our team is focused on delivering a destination that seamlessly combines luxury accommodation, conservation, and authentic African hospitality.',
+          'Current efforts remain centered on planning, infrastructure coordination, and strategic development milestones that will position the project for successful implementation. Our project remains aligned with our commitment to sustainable development while creating an exceptional destination for both local and international visitors.',
+        ],
+      },
+      {
+        heading: 'A Tranquil Luxury Wellness Destination',
+        paragraphs: [
+          'Our developments are being carefully designed to provide a tranquil luxury wellness destination, combining premium accommodation, spa facilities, and breathtaking natural surroundings. Our focus remains on delivering a unique guest experience while maximizing long-term investment value.',
+          'As we continue to reach important milestones across our portfolio, we remain dedicated to maintaining transparency and providing regular updates on our progress. Each development reflects our vision of creating sustainable, high-quality destinations that contribute meaningfully to regional tourism, economic growth, and investor returns.',
+        ],
+      },
+      {
+        heading: 'Developing Destinations. Creating Lasting Value.',
+        paragraphs: [
+          'This 1ha plot shares initiative invites you to join our group of investors in a destination that blends conservation, luxury, and authentic African hospitality. Together we are developing destinations and creating lasting value for our community and our investors.',
+        ],
+      },
+    ],
+    highlights: [
+      { icon: 'Trees', title: 'Conservation & Nature', body: 'A destination that seamlessly combines luxury accommodation with conservation and breathtaking natural surroundings.' },
+      { icon: 'Sparkles', title: 'Luxury Wellness', body: 'Premium accommodation, spa facilities, and a tranquil wellness experience designed for relaxation and rejuvenation.' },
+      { icon: 'TrendingUp', title: 'Long-Term Investment', body: 'A group investor initiative focused on delivering long-term value and meaningful returns for all stakeholders.' },
+      { icon: 'MapPin', title: 'Prime Hartebeespoort Location', body: 'Strategically positioned near one of South Africa\'s most scenic destinations, close to Hartbeespoort Dam.' },
+    ],
+    investment: {
+      heading: 'Join Our Group of Investors',
+      intro: 'Become part of a collective investment initiative on a 1-hectare plot in Hartebeespoort. Contact us to learn more about share pricing and payment options.',
+      details: [
+        { label: 'Plot Size', value: '1 hectare' },
+        { label: 'Location', value: 'Hartebeespoort' },
+      ],
+      options: [],
+      extras: [],
+    },
+    contactNote: 'We would love to share more details about how you can become part of this incredible investment journey.',
+  },
 ];
 
 export const TEAM = [
@@ -331,19 +378,19 @@ export const TEAM = [
 
 export const FAQS = [
   {
-    q: 'What is Rent-to-Own and how does it work?',
-    a: 'Rent-to-Own lets you occupy a property now while paying toward ownership over an agreed term. A portion of your monthly payment builds toward the purchase price, so you can own the home at the end of the term without a traditional mortgage upfront.',
+    q: 'What is Crowdfunding and how does it work?',
+    a: 'Crowdfunding lets you pool resources with other likeminded investors to secure a property you might not afford alone. Your contribution builds toward ownership over an agreed term, so you can own a share of the home without a traditional mortgage upfront.',
   },
   {
     q: "Can I qualify for a property if I'm blacklisted?",
-    a: 'Yes. We work with clients who have been blacklisted by offering alternative pathways such as rent-to-own, group buying, and our inclusive stokvel solutions. Speak to our rental specialist to find the option that fits your situation.',
+    a: 'Yes. We work with clients who have been blacklisted by offering alternative pathways such as crowdfunding, group buying, and our inclusive stokvel solutions. Speak to our rental specialist to find the option that fits your situation.',
   },
   {
     q: 'What areas do you have properties in?',
-    a: 'Our current developments are in Greenhills, Robinpark, Kocksoord, and Northriding, with new locations added as we grow. Each location is chosen for its growth potential and community infrastructure.',
+    a: 'Our current developments are in Greenhills, Robinpark, and Northriding, with new locations added as we grow. Each location is chosen for its growth potential and community infrastructure.',
   },
   {
-    q: 'How much deposit do I need for Rent-to-Own?',
+    q: 'How much deposit do I need for Crowdfunding?',
     a: 'Deposits vary by property. For example, our Ngonyama Lifestyle Estate stand requires a R299,000 deposit with monthly repayments of R7,000. We tailor deposit structures to your budget where possible.',
   },
   {

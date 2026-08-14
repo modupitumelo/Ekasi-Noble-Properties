@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BedDouble, Bath, Maximize, Users, MapPin, ArrowRight, Check } from 'lucide-react';
 import { PROPERTIES, type Property } from '@/data';
 
-const FILTERS = ['All', 'For Sale', 'Rent to Own', 'Group Buying'] as const;
+const FILTERS = ['All', 'For Sale', 'Crowdfunding', 'Group Buying'] as const;
 type Filter = (typeof FILTERS)[number];
 
 function PropertyCard({ p }: { p: Property }) {
