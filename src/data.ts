@@ -43,7 +43,7 @@ export const ABOUT_PILLARS = [
   {
     icon: ShieldCheck,
     title: 'Quality Developments',
-    body: 'Modern homes and apartments designed with high standards, ensuring comfort, security, and long-term value.',
+    body: 'Modern homes, apartments designed with high standards, ensuring comfort, security, and long-term value. And bush farm resort properties for Airbnb or getaway homes in upmarket top tourist destinations in Hartebeespoort.'
   },
 ];
 
@@ -81,11 +81,11 @@ export const PROPERTIES: Property[] = [
     id: 'greenhills-nala',
     name: 'Greenhills Nala Estate',
     location: 'Randfontein Greenhills',
-    price: 'R950,000',
+    price: 'R190000',
     description:
       'Beautiful property available for sale or group buying of 4x properties with a once-off contribution of R165,000 with other likeminded individuals.',
-    beds: '3 Beds',
-    baths: '2 Baths',
+    beds: '2 Beds',
+    baths: '1 Bath',
     size: '150m²',
     tags: ['For Sale', 'Group Buying'],
     image: '/bhubesi.jpg',
