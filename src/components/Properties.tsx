@@ -89,7 +89,7 @@ export function Properties() {
             Featured Properties
           </span>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.1]">
-            Exclusive properties & investment opportunities in prime locations.
+            Exclusive properties & ownership opportunities in prime locations.
           </h2>
         </div>
 
